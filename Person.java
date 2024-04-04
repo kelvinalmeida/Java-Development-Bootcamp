@@ -1,57 +1,98 @@
-public class Person {
+import java.util.Arrays;
+
+
+public class Person
+{
     private String name;
-    private String nacionality;
-    private String datePfBhirf;
-    private int sitNumber;
+    private String nationality;
+    private String dateOfBirth;
+    private String[] passport;
+    private int seatNumber;
 
-    public static void main(String[] args) {
 
-    }
+  public static void main (String[]args)
+  {
 
-    public Person(String name, String nacionality, String datePfBhirf, int sitNumber) {
-        this.name = name;
-        this.nacionality = nacionality;
-        this.datePfBhirf = datePfBhirf;
-        this.sitNumber = sitNumber;
-    }
+  }
 
-    public Person(Person source) {
-        this.name = source.name;
-        this.nacionality = source.nacionality;
-        this.datePfBhirf = source.datePfBhirf;
-        this.sitNumber = source.sitNumber;
-    }
+  public Person (String name, String nationality, String dateOfBirth,
+				 int seatNumber, String[] passport)
+  {
+	this.name = name;
+	this.nationality = nationality;
+	this.dateOfBirth = dateOfBirth;
+	this.seatNumber = seatNumber;
+	this.passport = Arrays.copyOf(passport, passport.length);
+  }
 
-    public String getName() {
-        return name;
-    }
+  public Person (Person source)
+  {
+	this.name = source.name;
+	this.nationality = source.nationality;
+	this.dateOfBirth = source.dateOfBirth;
+	this.seatNumber = source.seatNumber;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName ()
+  {
+	return name;
+  }
 
-    public String getNacionality() {
-        return nacionality;
-    }
+  public void setName (String name)
+  {
+	this.name = name;
+  }
+  
+  public String[] getPassaport ()
+  {
+	return this.passport;
+  }
 
-    public void setNacionality(String nacionality) {
-        this.nacionality = nacionality;
-    }
+  public void setPassaport (String[] passport)
+  {
+	this.passport = passport;
+  }
 
-    public String getDatePfBhirf() {
-        return datePfBhirf;
-    }
+  public String getNationality ()
+  {
+	return this.nationality;
+  }
 
-    public void setDatePfBhirf(String datePfBhirf) {
-        this.datePfBhirf = datePfBhirf;
-    }
+  public void setNationality (String nationality)
+  {
+	this.nationality = nationality;
+  }
 
-    public int getSitNumber() {
-        return sitNumber;
-    }
+  public String getDateOfBirth ()
+  {
+	return dateOfBirth;
+  }
 
-    public void setSitNumber(int sitNumber) {
-        this.sitNumber = sitNumber;
-    }
+  public void setDateOfBirth (String dateOfBirth)
+  {
+	this.dateOfBirth = dateOfBirth;
+  }
+
+  public int getSeatNumber ()
+  {
+	return seatNumber;
+  }
+
+  public void setSeatNumber (int seatNumber)
+  {
+	this.seatNumber = seatNumber;
+  }
+
+  public boolean applyPassaport ()
+  {
+    int number = (int) (Math.random() * 2);
+    return number == 1 ? true : false;
+  }
+  
+  public void chooseSeat() 
+  {
+    int numberOfSeat = (int)(Math.random() * 11 + 1);
+    this.seatNumber = numberOfSeat;
+  }
 
 }
