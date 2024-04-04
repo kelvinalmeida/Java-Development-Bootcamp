@@ -41,6 +41,10 @@ public class Main
       "Seat Number: " + kelvinPerson.getSeatNumber() + "\n" + "Passport: " +
        Arrays.toString(kelvinPerson.getPassaport()) + "\n");
 	  }
-
+	  
+	  
+	  
+    System.out.println("\n" + kelvinPerson);
+    
   }
 }
