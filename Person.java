@@ -16,13 +16,13 @@ public class Person
   }
 
   public Person (String name, String nationality, String dateOfBirth,
-				 int seatNumber, String[] passport)
+				 int seatNumber)
   {
 	this.name = name;
 	this.nationality = nationality;
 	this.dateOfBirth = dateOfBirth;
 	this.seatNumber = seatNumber;
-	this.passport = Arrays.copyOf(passport, passport.length);
+	this.passport = new String[3];
   }
 
   public Person (Person source)
@@ -45,12 +45,12 @@ public class Person
   
   public String[] getPassaport ()
   {
-	return this.passport;
+	return Arrays.copyOf(this.passport, this.passport.length);
   }
 
-  public void setPassaport (String[] passport)
+  public void setPassaport ()
   {
-	this.passport = passport;
+	this.passport = new String[] {name, nationality, dateOfBirth};
   }
 
   public String getNationality ()
