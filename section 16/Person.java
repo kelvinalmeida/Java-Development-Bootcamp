@@ -25,6 +25,7 @@ public class Person {
     this.nationality = source.nationality;
     this.dateOfBirth = source.dateOfBirth;
     this.seatNumber = source.seatNumber;
+    this.passport = new String[3];
   }
 
   public String getName() {
