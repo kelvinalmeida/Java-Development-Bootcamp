@@ -29,17 +29,18 @@ public class Main {
         System.out.print("\nPlease choose an integer between 1 - 10: ");
         
         Scanner scanner = new Scanner(System.in);
-        int userChoice = scanner.nextInt();
+        int userChoiceIndex = scanner.nextInt();
         
-        Movie moveChoose = store.getMovie(userChoice - 1);
-        System.out.print("Set a new rating for " + moveChoose.getName() + ": ");
+        Movie movieChoose = store.getMovie(userChoiceIndex - 1);
+        System.out.print("Set a new rating for " + movieChoose.getName() + ": ");
         double userRating = scanner.nextDouble();
-        moveChoose.setRating(userRating);
-        store.setMovie(userChoice, moveChoose);
+        movieChoose.setRating(userRating);
+        store.setMovie(userChoiceIndex - 1, movieChoose);
 
         printStore();
         userInput();
-        
+
+        scanner.close();
     }
 
     public static void userInput() {
@@ -53,7 +54,7 @@ public class Main {
     }
 
     public static void printStore() {
-        System.out.println("********************************MOVIE STORE*******************************");
+        System.out.println("\n\n********************************MOVIE STORE*******************************");
         System.out.println(store);
     }
 

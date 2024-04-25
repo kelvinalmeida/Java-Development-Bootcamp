@@ -18,7 +18,7 @@ public class Store {
         int count = 0;
         String temp = "";
         for (Movie movie : movies) {
-            temp += (++count) + " " + movie.toString() + "\n";
+            temp += (++count) + "    " + movie.toString() + "\n";
         }
         return temp;
     }
