@@ -1,17 +1,14 @@
 public class Movie {
+
     private String name;
     private String format;
     private double rating;
-
-    public static void main(String[] args) {
-
-    }
 
     public Movie(String name, String format, double rating) {
         this.name = name;
         this.format = format;
         this.rating = rating;
-    }
+    }    
 
     public Movie(Movie source) {
         this.name = source.name;
@@ -26,17 +23,17 @@ public class Movie {
     public void setName(String name) {
         this.name = name;
     }
-
+    
     public String getFormat() {
         return format;
     }
 
-    public void setFormat(String format) {
-        this.format = format;
-    }
-
     public double getRating() {
         return rating;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
     }
 
     public void setRating(double rating) {
@@ -45,5 +42,6 @@ public class Movie {
 
     public String toString() {
         return this.rating + "\t" + this.format + "\t\t" + this.name + "";
-    }
+    }    
+
 }
