@@ -1,19 +1,17 @@
-public class Contact {
+import java.time.LocalDate;
+import java.time.Period;
 
+public class Contact {
     private String name;
     private String phoneNumber;
     private String birthDate;
     private int age;
 
-    public static void main(String[] args) {
-
-    }
-
-    public Contact(String name, String phoneNumber, String birthDate, int age) {
+    public Contact(String name, String phoneNumber, String birthDate) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.birthDate = birthDate;
-        this.age = age;
+        this.age = toAge(birthDate);
     }
 
     public Contact(Contact source) {
@@ -23,8 +21,21 @@ public class Contact {
         this.age = source.age;
     }
 
+    public int toAge(String birthDate) {
+
+        LocalDate dateBirthLocalDate = LocalDate.parse(birthDate);
+        LocalDate nowLocalDate = LocalDate.now();
+
+        Period period = Period.between(dateBirthLocalDate, nowLocalDate);
+
+        int age = period.getYears();
+
+        return age;
+    }
+
+
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -32,7 +43,7 @@ public class Contact {
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return this.phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -40,19 +51,25 @@ public class Contact {
     }
 
     public String getBirthDate() {
-        return birthDate;
+        return this.birthDate;
     }
 
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
+        setAge(birthDate);
     }
 
     public int getAge() {
-        return age;
+        return this.age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    private void setAge(String age) {
+        this.age = toAge(age);
+    }
+
+    @Override
+    public String toString() {
+        return "age  " + this.age;
     }
 
 }
