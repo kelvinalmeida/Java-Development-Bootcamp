@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class Contact {
     private String name;
@@ -21,55 +22,51 @@ public class Contact {
         this.age = source.age;
     }
 
-    public int toAge(String birthDate) {
-
-        LocalDate dateBirthLocalDate = LocalDate.parse(birthDate);
-        LocalDate nowLocalDate = LocalDate.now();
-
-        Period period = Period.between(dateBirthLocalDate, nowLocalDate);
-
-        int age = period.getYears();
-
-        return age;
+    public String getName() {
+        return name;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-    public String getName() {
-        return this.name;
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getPhoneNumber() {
-        return this.phoneNumber;
-    }
-
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getBirthDate() {
-        return this.birthDate;
-    }
-
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
-        setAge(birthDate);
+        setAge(toAge(birthDate));
     }
 
-    public int getAge() {
-        return this.age;
+    private void setAge(int age) {
+        this.age = age;
     }
 
-    private void setAge(String age) {
-        this.age = toAge(age);
+    public int toAge(String birthDate) {
+        LocalDate parsedBirthDate = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDate currentDate = LocalDate.now();
+        Period period = Period.between(parsedBirthDate, currentDate);
+        return period.getYears();
     }
 
-    @Override
     public String toString() {
-        return "age  " + this.age;
+        return "Name: " + this.name + "\n" +
+                "Phone number: " + this.phoneNumber + "\n" +
+                "Birth Date: " + this.birthDate + "\n" +
+                "Age: " + this.age + " year old\n";
     }
 
 }
