@@ -8,7 +8,14 @@ public class Centrifuge extends LabEquipment {
 
     public Centrifuge(String manufacturer, String model, int year, int maxRPM) {
         super(manufacturer, model, year);
-        this.maxRPM = maxRPM;
+        setMaxRPM(maxRPM
+        
+        );
+    }
+
+    public Centrifuge(Centrifuge source) {
+        super(source.getManufacturer(), source.getModel(), source.getYear());
+        setMaxRPM(source.getMaxRPM());
     }
 
     public int getMaxRPM() {
@@ -21,6 +28,11 @@ public class Centrifuge extends LabEquipment {
         }
 
         this.maxRPM = maxRPM;
+    }
+
+    @Override
+    public LabEquipment clone() {
+        return new Centrifuge(super.getManufacturer(), super.getModel(), super.getYear(), this.maxRPM);
     }
 
     @Override

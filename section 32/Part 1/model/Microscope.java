@@ -11,6 +11,12 @@ public class Microscope extends LabEquipment {
         this.magnification = magnification;
     }
 
+    public Microscope(Microscope source) {
+        super(source.getManufacturer(), source.getModel(), source.getYear());
+        setMagnification(source.getMagnification());
+    }
+
+
     public int getMagnification() {
         return this.magnification;
     }
@@ -21,6 +27,11 @@ public class Microscope extends LabEquipment {
         }
 
         this.magnification = magnification;
+    }
+
+    @Override
+    public LabEquipment clone() {
+        return new Microscope(this.getManufacturer(), this.getModel(), super.getYear(), this.getMagnification());
     }
 
     @Override
